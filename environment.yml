@@ -1,0 +1,8 @@
+name: migselect_env
+
+channels:
+  - conda-forge
+dependencies:
+  - python==3.12.4
+  - mpi4py
+  - gcc_linux-64
