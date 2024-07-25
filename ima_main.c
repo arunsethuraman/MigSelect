@@ -288,8 +288,10 @@ scan_commandline (int argc, char *argv[], int currentid)
    * is never used by the code:  Cp, Ep, Wp, Yp.  These variable flags
    * are being left in for completeness
    */
+
+  // last updated by: RE
   int Ap, Bp, Cp, Dp, Ep, Fp, Gp, Hfp, Hnp, Hkp, Hap, Hbp, Ip, Jp, Lp, Mp, Op, Pp,
-    Qp, Rp, Sp, Tp, Up, Vp, Wp, Yp, Zp;
+    Qp, Rp, Sp, Tp, Up, Vp, Wp, Yp, Zp, meanPar, sortTI;
   // VS
   int Al; // related with assignment of loci options
   int Xp;
@@ -332,6 +334,9 @@ scan_commandline (int argc, char *argv[], int currentid)
   Yp = 0;                       /* mutation rate scalar for loci with mutation rates given in input file - for use with LOADRUN mode  - flag not used */
   Zp = 0;                       /* screen printout frequency */
   Xp = 0;                       /* True Assignment */
+  // RE
+  meanPar = 0;                  /* Mean Partition */
+  sortTI = 0;                   /* SortTI */
 
   // VS
   Al = 0;
@@ -415,20 +420,20 @@ NM05 can be implemented for no migration case as well.
     printf ("-l  Run duration (default: %d genealogies sampled per locus):\n", DEFAULTNUMGENEALOGIES);
     printf ("     If in MCMC mode (i.e. not loading genealogies from a previous run) \n");
     printf ("       - If integer, the number of genealogies to save\n");
-    printf ("         This value times -d value sets the # of steps in chain after burnin) \n");
+    printf ("         This value times -d value sets the # of steps in chain after burnin \n");
     printf ("	    - If floating point, the time in hours between outputs. \n");
     printf ("         Run continues until file " "IMrun" " is no longer present\n");
     printf ("           in the directory, or if present, does not begin with 'y'\n");
     printf ("     If in load-genealogy mode (i.e. using -r0 to load genealogies from previous run)\n");
     printf ("       - Integer indicates number of genealogies to load from file(s) named with -r\n");
-    printf ("-m  Migration prior value (maximum for uniform,  mean if exponential distribution is used \n");
+    printf ("-m  Migration prior value (maximum for uniform,  mean if exponential distribution is used) \n");
     printf ("-o  Output file name (no spaces) default is 'outfile.txt' \n");
     printf ("-p  Output options: \n");
     printf ("    0 Turn off trend plots in outfile (default is to print trend plots)\n");
     printf ("    1 Turn off plots of marginal curves in outfile (default is to print marginal density plots)\n");
     printf ("    2 Print TMRCA histogram for each genealogy (MCMC mode only)\n");
     printf ("    3 Print histogram of parameters on demographic scales  (requires mutation rate(s) in data file)\n");
-    printf ("    4 Print histogram of splitting times divided by prior (do not use with -j0 or when only 2 sampled populations\n");
+    printf ("    4 Print histogram of splitting times divided by prior (do not use with -j0 or when only 2 sampled populations) \n");
     printf ("    5 Print estimates and histograms of population migration rate (2NM)\n");
     printf ("    6 Print pairwise probabilities that one parameter is greater than another \n");
     /* CR:110114.2  message text changed */
